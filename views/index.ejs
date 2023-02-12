@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home page</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/main.css"/>
+</head>
+
+<body>
+<div class="container-fluid d-flex h-100 justify-content-center align-items-center p-0">
+    <div class="w-50 p-3 row">
+        <div class="background">
+            </br>
+            <form method="post" action="/" enctype="multipart/form-data">
+                <b>TASK:</b>
+                <input type="text" class="form-control  mb-3" name="task_content" placeholder="Enter a task.."/>
+
+                <b>EXECUTION STATUS:</b>
+                <input type="number" class="form-control mb-3" name="executing_status"
+                       placeholder="Enter a execution status.." min="0" max="100" step="1"/>
+
+                <b>COMPLETION DATE:</b>
+                <input type="date" class="form-control  mb-3" name="completion_date"/>
+
+                <b>INPUT FILE:</b>
+                <input type="file" class="form-control  mb-3" lang="en" name="input_file"/>
+
+                <button class="btn btn-info text-white w-100" type="submit">Create task</button>
+                </br></br>
+            </form>
+        </div>
+
+        <form method="get" action="/status">
+            </br>
+            <div class="d-inline-flex w-100">
+                <input type="number" class="form-control" placeholder="Enter a execution status.." name="status" min="0"
+                       max="100" step="1"/>
+                <button class="btn btn-info text-white ms-1" type="submit">Find</button>
+            </div>
+            </br></br>
+            <h3>RESULTS:</h3>
+            </br>
+            <% for(var i = 0;i < (filterTasks.length);i++){ %>
+                <p><b>TASK: </b><%= filterTasks[i].content %> </p>
+                <p><b>EXECUTION STATUS: </b><%= filterTasks[i].status %></p>
+                <p><b>COMPLETION DATE: </b><%= filterTasks[i].date %></p>
+                <p><a href="path?path=<%= filterTasks[i].newFilename %>&filename=<%= filterTasks[i].fileName %>"
+                      class="text-black" download="<%= filterTasks[i].newFilename %>"><b>DOWNLOAD
+                            FILE:</b></a> <%= filterTasks[i].fileName %></p>
+                </br>
+                <div class="blue-part"></div>
+                </br>
+            <% } %>
+        </form>
+    </div>
+</div>
+</body>
+
+</html>

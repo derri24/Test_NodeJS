@@ -1,0 +1,10 @@
+.background{
+    background-color: #EFF6F6;
+    width: 100%;
+}
+
+.blue-part {
+    padding-top: 1px;
+    padding-bottom: 1px;
+    background-color: #71EFFF;
+}
